@@ -20,12 +20,14 @@ public class ArtistController {
 
     @GetMapping("/{community_id}/artist")
     public ResponseEntity getCommunityDto(@PathVariable Long community_id) {
+        // Получение информации о сообществе и его художниках
         CommunityFeedDto communityFeedDto = artistService.getCommunityArtistFeedById(community_id);
         return ResponseEntity.ok(communityFeedDto);
     }
 
     @PutMapping("/{community_id}/artist")
     public ResponseEntity likePost(@PathVariable Long community_id, @RequestBody Post post) {
+        // Добавление лайка к посту
         artistService.addLikeToPost(post.getId_post());
         return ResponseEntity.ok(post);
     }

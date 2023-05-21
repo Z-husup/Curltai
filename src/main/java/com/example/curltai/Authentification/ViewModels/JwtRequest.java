@@ -1,4 +1,4 @@
-package com.example.curltai.Authentification.viewmodels;
+package com.example.curltai.Authentification.ViewModels;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.example.curltai.Authentification.viewmodels;
+package com.example.curltai.Authentification.ViewModels;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserDto {
-    private int id;
-
+public class UserViewModel {
     private String login;
-    private String role;
+    private String email;
+    private String password;
 }

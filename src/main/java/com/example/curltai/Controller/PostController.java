@@ -22,8 +22,10 @@ public class PostController {
 
     @PostMapping("/{community_id}/feed/postModal")
     public ResponseEntity createNewPost(@PathVariable NewPostDto newPostDto) {
+        // Создаем новый пост на основе данных из newPostDto
         Post newPost = feedService.createNewPost(newPostDto);
         return ResponseEntity.ok(newPost);
     }
+
 
 }

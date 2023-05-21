@@ -28,9 +28,13 @@ public class CommunitiesController {
     @GetMapping("/communities")
     public ResponseEntity getHomepageDto(@PathVariable User user) {
         HomepageDto homepageDto = new HomepageDto();
+        // Получение списка всех сообществ
         homepageDto.setCommunities(communityRepository.findAll());
+        // Получение подписок пользователя на сообщества
         homepageDto.setSubs((List) user.getCommunity());
+        // Установка информации о пользователе
         homepageDto.setUser(user);
+        // Возвращение объекта homepageDto в теле ответа с статусом 200 OK
         return ResponseEntity.ok(homepageDto);
     }
 

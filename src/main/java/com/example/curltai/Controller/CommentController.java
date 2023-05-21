@@ -9,8 +9,6 @@ import com.example.curltai.Service.CommentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-
 @RestController
 public class CommentController {
 
@@ -25,19 +23,22 @@ public class CommentController {
     }
 
     @GetMapping("/{community_id}/feed/{post_id}")
-    public ResponseEntity getCommentDto(@PathVariable  Long post_id) {
+    public ResponseEntity getCommentDto(@PathVariable Long post_id) {
+        // Получение комментариев для определенного поста
         CommentsDto commentsDto = commentService.getCommentDto(post_id);
         return ResponseEntity.ok(commentsDto);
     }
 
     @PutMapping("/{community_id}/feed/{post_id}")
-    public ResponseEntity createNewComment(@PathVariable  Long post_id, @RequestBody NewCommentDto newCommentDto) {
+    public ResponseEntity createNewComment(@PathVariable Long post_id, @RequestBody NewCommentDto newCommentDto) {
+        // Создание нового комментария для поста
         Comment comment = commentService.createNewComment(post_id, newCommentDto);
         return ResponseEntity.ok(comment);
     }
 
     @DeleteMapping("/{community_id}/feed/{post_id}")
-    public ResponseEntity deleteComment(@RequestBody  Long comment_id) {
+    public ResponseEntity deleteComment(@RequestBody Long comment_id) {
+        // Удаление комментария по его идентификатору
         Comment comment = commentService.deleteComment(comment_id);
         return ResponseEntity.ok(comment);
     }

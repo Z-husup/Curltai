@@ -1,4 +1,4 @@
-package com.example.curltai.Authentification.services;
+package com.example.curltai.Authentification.Services;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.example.curltai.Authentification.jwt;
+package com.example.curltai.Authentification.Jwt;
 
 import lombok.Getter;
 import lombok.Setter;

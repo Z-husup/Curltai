@@ -27,7 +27,9 @@ public class MediaController {
 
     @GetMapping("/{community_id}/media")
     public ResponseEntity getMediaDto(@PathVariable Long community_id) {
+        // Получение данных о медиа-файлах сообщества по идентификатору community_id
         MediaDto mediaDto = mediaService.getMediaDto(community_id);
+        // Возвращение объекта mediaDto в ответе с кодом 200 OK
         return ResponseEntity.ok(mediaDto);
     }
 }

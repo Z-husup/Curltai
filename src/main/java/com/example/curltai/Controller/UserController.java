@@ -24,18 +24,23 @@ public class UserController {
 
     @GetMapping
     public List<User> getUsers() {
+        // Получение списка всех пользователей
         return userRepository.findAll();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(@PathVariable Long id) {
+        // Удаление пользователя по указанному идентификатору
         userRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity getUserById(@PathVariable Long id, @RequestHeader("Authorization") String authorizationHeader) {
-        String token = authorizationHeader.substring(7); // Remove "Bearer " from the authorization header
+        // Извлечение токена из заголовка авторизации
+        String token = authorizationHeader.substring(7); // Удаление "Bearer " из заголовка авторизации
+        // Получение информации о пользователе с указанным идентификатором с проверкой валидности токена
         return userService.getUserByIdWithTokenValidation(id, token);
     }
+
 }

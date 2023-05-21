@@ -1,7 +1,7 @@
 package com.example.curltai.Service;
 
-import com.example.curltai.Authentification.services.JwtProvider;
-import com.example.curltai.Authentification.services.PasswordHasher;
+import com.example.curltai.Authentification.Services.JwtProvider;
+import com.example.curltai.Authentification.Services.PasswordHasher;
 import com.example.curltai.Model.Users.User;
 import com.example.curltai.Repository.UserRepository;
 import lombok.NonNull;

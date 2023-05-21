@@ -27,13 +27,19 @@ public class StoreController {
 
     @GetMapping("/{community_id}/store")
     public ResponseEntity getStoreDto(@PathVariable Long community_id) {
+        // Получение информации о магазине для указанного идентификатора сообщества
         StoreDto storeDto = storeService.getStoreDto(community_id);
+        // Возвращаем информацию о магазине
         return ResponseEntity.ok(storeDto);
     }
 
     @GetMapping("/{community_id}/store/{product_id}")
     public ResponseEntity getProduct(@PathVariable Long product_id) {
+        // Получение информации о продукте для указанного идентификатора
         Product product = storeService.getProduct(product_id);
+        // Возвращаем информацию о продукте
         return ResponseEntity.ok(product);
     }
+
+
 }

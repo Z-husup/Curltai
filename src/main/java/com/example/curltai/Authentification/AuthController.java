@@ -2,11 +2,11 @@ package com.example.curltai.Authentification;
 
 import com.example.curltai.Dto.LoginDto;
 import com.example.curltai.Model.Users.User;
-import com.example.curltai.Authentification.services.AuthService;
-import com.example.curltai.Authentification.services.PasswordHasher;
+import com.example.curltai.Authentification.Services.AuthService;
+import com.example.curltai.Authentification.Services.PasswordHasher;
 import com.example.curltai.Service.UserService;
-import com.example.curltai.Authentification.viewmodels.JwtResponse;
-import com.example.curltai.Authentification.viewmodels.UserViewModel;
+import com.example.curltai.Authentification.ViewModels.JwtResponse;
+import com.example.curltai.Authentification.ViewModels.UserViewModel;
 import jakarta.security.auth.message.AuthException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
