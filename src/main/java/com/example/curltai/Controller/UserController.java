@@ -2,6 +2,7 @@ package com.example.curltai.Controller;
 
 import com.example.curltai.Model.Users.User;
 import com.example.curltai.Repository.UserRepository;
+import com.example.curltai.Service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +15,11 @@ import java.util.List;
 public class UserController {
 
     private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @GetMapping
@@ -24,16 +27,13 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/{id}")
-    public User getUser(@PathVariable Long id) {
-        return userRepository.findById(id).orElseThrow(RuntimeException::new);
-    }
-
-    @PostMapping
+    @PostMapping("/new-user")
     public ResponseEntity createUser(@RequestBody User User) throws URISyntaxException {
         User savedUser = userRepository.save(User);
         return ResponseEntity.created(new URI("/" + savedUser.getId_user())).body(savedUser);
     }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User User) {
@@ -49,5 +49,11 @@ public class UserController {
     public ResponseEntity deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity getUserById(@PathVariable Long id, @RequestHeader("Authorization") String authorizationHeader) {
+        String token = authorizationHeader.substring(7); // Remove "Bearer " from the authorization header
+        return userService.getUserByIdWithTokenValidation(id, token);
     }
 }

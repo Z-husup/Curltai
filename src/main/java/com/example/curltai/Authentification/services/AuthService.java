@@ -1,8 +1,10 @@
 package com.example.curltai.Authentification.services;
 
-import com.example.curltai.Authentification.JwtAuthentication;
+import com.example.curltai.Authentification.jwt.JwtProvider;
+import com.example.curltai.Authentification.jwt.JwtAuthentication;
 import com.example.curltai.Model.Users.User;
 import com.example.curltai.Authentification.viewmodels.JwtResponse;
+import com.example.curltai.Service.UserService;
 import io.jsonwebtoken.Claims;
 import jakarta.security.auth.message.AuthException;
 import lombok.NonNull;

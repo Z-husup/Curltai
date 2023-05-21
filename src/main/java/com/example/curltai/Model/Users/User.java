@@ -52,9 +52,10 @@ public class User {
     private Set<Post> post = new HashSet<>();
 
 
-    public User(Long id_user, String login, String password) {
+    public User(Long id_user, String login, String email, String password) {
         this.id_user = id_user;
         this.login = login;
+        this.email = email;
         this.password = password;
     }
 

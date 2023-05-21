@@ -2,6 +2,7 @@ package com.example.curltai.Admin.Controller;
 
 import com.example.curltai.Admin.Dto.NewArtistDto;
 import com.example.curltai.Admin.Dto.NewCommunityDto;
+import com.example.curltai.Admin.Security.RestrictedController;
 import com.example.curltai.Admin.Service.AdminService;
 import com.example.curltai.Model.Community.Community;
 import com.example.curltai.Model.Users.User;

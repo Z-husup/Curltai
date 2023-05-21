@@ -1,4 +1,4 @@
-package com.example.curltai.Authentification;
+package com.example.curltai.Authentification.jwt;
 
 import io.jsonwebtoken.Claims;
 

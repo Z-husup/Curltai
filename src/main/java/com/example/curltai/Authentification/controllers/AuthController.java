@@ -3,7 +3,7 @@ package com.example.curltai.Authentification.controllers;
 import com.example.curltai.Model.Users.User;
 import com.example.curltai.Authentification.services.AuthService;
 import com.example.curltai.Authentification.services.PasswordHasher;
-import com.example.curltai.Authentification.services.UserService;
+import com.example.curltai.Service.UserService;
 import com.example.curltai.Authentification.viewmodels.JwtResponse;
 import com.example.curltai.Authentification.viewmodels.UserViewModel;
 import jakarta.security.auth.message.AuthException;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping
 @AllArgsConstructor
 public class AuthController {
 
@@ -34,11 +34,11 @@ public class AuthController {
         return ResponseEntity.ok(token);
     }
 
-    @PostMapping("create-user")
+    @PostMapping("/new-user")
     public ResponseEntity createUser(@RequestBody UserViewModel userVm) {
         User user;
         try {
-            user = new User((long) -1, userVm.getLogin(), userVm.getPassword());
+            user = new User((long) -1, userVm.getLogin(), userVm.getEmail(), userVm.getPassword());
         } catch (IllegalArgumentException exc) {
             return ResponseEntity.badRequest().body("Incorrect role!");
         }

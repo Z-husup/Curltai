@@ -1,8 +1,5 @@
-package com.example.curltai.Authentification.filters;
+package com.example.curltai.Authentification.jwt;
 
-import com.example.curltai.Authentification.JwtAuthentication;
-import com.example.curltai.Authentification.JwtUtils;
-import com.example.curltai.Authentification.services.JwtProvider;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

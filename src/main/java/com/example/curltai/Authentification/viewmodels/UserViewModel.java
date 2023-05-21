@@ -11,5 +11,6 @@ import lombok.Setter;
 @Setter
 public class UserViewModel {
     private String login;
+    private String email;
     private String password;
 }
