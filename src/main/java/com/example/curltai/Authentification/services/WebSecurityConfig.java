@@ -1,4 +1,4 @@
-package com.example.curltai.Authentification.jwt;
+package com.example.curltai.Authentification.services;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

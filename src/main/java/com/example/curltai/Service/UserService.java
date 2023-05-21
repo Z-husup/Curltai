@@ -1,6 +1,6 @@
 package com.example.curltai.Service;
 
-import com.example.curltai.Authentification.jwt.JwtProvider;
+import com.example.curltai.Authentification.services.JwtProvider;
 import com.example.curltai.Authentification.services.PasswordHasher;
 import com.example.curltai.Model.Users.User;
 import com.example.curltai.Repository.UserRepository;
@@ -28,6 +28,9 @@ public class UserService {
 
     public Optional<User> getByLogin(@NonNull String login) {
         return Optional.ofNullable(userRepository.findByLogin(login));
+    }
+    public Optional<User> getByEmail(@NonNull String login) {
+        return Optional.ofNullable(userRepository.findByEmail(login));
     }
 
     public boolean checkLoginAndPassword(@NonNull String login, @NonNull String password){
@@ -57,7 +60,3 @@ public class UserService {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or expired token");
         }
     }
-
-
-
-}

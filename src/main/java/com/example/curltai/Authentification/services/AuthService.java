@@ -1,6 +1,5 @@
 package com.example.curltai.Authentification.services;
 
-import com.example.curltai.Authentification.jwt.JwtProvider;
 import com.example.curltai.Authentification.jwt.JwtAuthentication;
 import com.example.curltai.Model.Users.User;
 import com.example.curltai.Authentification.viewmodels.JwtResponse;

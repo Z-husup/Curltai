@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping
+@RequestMapping("/auth")
 @AllArgsConstructor
 public class AuthController {
 
@@ -34,7 +34,7 @@ public class AuthController {
         return ResponseEntity.ok(token);
     }
 
-    @PostMapping("/new-user")
+    @PostMapping("new-user")
     public ResponseEntity createUser(@RequestBody UserViewModel userVm) {
         User user;
         try {
@@ -53,6 +53,9 @@ public class AuthController {
 
         if (userService.getByLogin(user.getLogin()).isPresent()) {
             return ResponseEntity.badRequest().body("The user with same login already exist!");
+        }
+        if (userService.getByEmail(user.getEmail()).isPresent()) {
+            return ResponseEntity.badRequest().body("The user with same email already exist!");
         }
 
         userService.createUser(user, user.getPassword());

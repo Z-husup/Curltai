@@ -1,5 +1,6 @@
 package com.example.curltai.Authentification.jwt;
 
+import com.example.curltai.Authentification.jwt.JwtAuthentication;
 import io.jsonwebtoken.Claims;
 
 public final class JwtUtils {
