@@ -33,18 +33,6 @@ public class UserController {
         return ResponseEntity.created(new URI("/" + savedUser.getId_user())).body(savedUser);
     }
 
-
-
-    @PutMapping("/{id}")
-    public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User User) {
-        User currentUser = userRepository.findById(id).orElseThrow(RuntimeException::new);
-        currentUser.setLogin(User.getLogin());
-        currentUser.setEmail(User.getEmail());
-        currentUser = userRepository.save(User);
-
-        return ResponseEntity.ok(currentUser);
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);

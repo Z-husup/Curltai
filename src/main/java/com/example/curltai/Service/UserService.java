@@ -42,11 +42,6 @@ public class UserService {
         return passwordHasher.check(user.get().getPassword(), password);
     }
 
-    public void createUser(User user, String password) {
-        user.setPassword(passwordHasher.hash(password));
-        userRepository.save(user);
-    }
-
     public ResponseEntity getUserByIdWithTokenValidation(Long id, String token) {
         if (jwtProvider.validateAccessToken(token)) {
             // Token is valid, retrieve user from database and return the response
