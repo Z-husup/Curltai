@@ -29,19 +29,20 @@ public class UserService {
     public Optional<User> getByLogin(@NonNull String login) {
         return Optional.ofNullable(userRepository.findByLogin(login));
     }
+
     public Optional<User> getByEmail(@NonNull String login) {
         return Optional.ofNullable(userRepository.findByEmail(login));
     }
 
-    public boolean checkLoginAndPassword(@NonNull String login, @NonNull String password){
+    public boolean checkLoginAndPassword(@NonNull String login, @NonNull String password) {
         var user = getByLogin(login);
-        if(user.isEmpty()){
+        if (user.isEmpty()) {
             return false;
         }
         return passwordHasher.check(user.get().getPassword(), password);
     }
 
-    public void createUser(User user, String password){
+    public void createUser(User user, String password) {
         user.setPassword(passwordHasher.hash(password));
         userRepository.save(user);
     }
@@ -60,3 +61,4 @@ public class UserService {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid or expired token");
         }
     }
+}
