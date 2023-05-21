@@ -27,12 +27,6 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @PostMapping("/new-user")
-    public ResponseEntity createUser(@RequestBody User User) throws URISyntaxException {
-        User savedUser = userRepository.save(User);
-        return ResponseEntity.created(new URI("/" + savedUser.getId_user())).body(savedUser);
-    }
-
     @DeleteMapping("/{id}")
     public ResponseEntity deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);

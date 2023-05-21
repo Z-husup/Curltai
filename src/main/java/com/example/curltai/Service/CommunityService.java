@@ -18,21 +18,10 @@ public class CommunityService implements CommunityServiceInterface {
         this.communityRepository = communityRepository;
     }
 
-    public CommunityDto getCommunitFeedyById(Long communityId) {
-        Community community = communityRepository.findById(communityId).orElseThrow();
-
-        CommunityDto communityDto = new CommunityDto();
-        communityDto.setPosts(new ArrayList<>(community.getPost()));
-        communityDto.setArtists(new ArrayList<>(community.getArtist()));
-        communityDto.setImage(community.getImage());
-        communityDto.setMembership(community.getMembership());
-
-        return communityDto;
-    }
-
     public List<Community> getAllCommunities() {
         return communityRepository.findAll();
     }
+
     public Community getCommunityById(Long id) {
         return communityRepository.findById(id)
                 .orElseThrow(() -> new CommunityNotFoundException("Community not found"));
