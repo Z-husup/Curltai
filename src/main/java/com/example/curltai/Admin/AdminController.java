@@ -1,4 +1,4 @@
-package com.example.curltai.Admin.Controller;
+package com.example.curltai.Admin;
 
 import com.example.curltai.Admin.Dto.NewArtistDto;
 import com.example.curltai.Admin.Dto.NewCommunityDto;
@@ -54,7 +54,6 @@ public class AdminController {
         modelAndView.addObject("community", community);
         return modelAndView;
     }
-
 
 
     @PostMapping(value = "/new-community", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)

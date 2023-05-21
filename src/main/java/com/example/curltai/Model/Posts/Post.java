@@ -11,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,11 +25,9 @@ public class Post {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id_post;
 
-    private String title;
-
     private String body;
 
-    private Time created_at;
+    private Timestamp created_at;
 
     private int likes;
 

@@ -1,5 +1,6 @@
-package com.example.curltai.Authentification.controllers;
+package com.example.curltai.Authentification;
 
+import com.example.curltai.Dto.LoginDto;
 import com.example.curltai.Model.Users.User;
 import com.example.curltai.Authentification.services.AuthService;
 import com.example.curltai.Authentification.services.PasswordHasher;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping
 @AllArgsConstructor
 public class AuthController {
 
@@ -22,19 +23,17 @@ public class AuthController {
     private final UserService userService;
     private final PasswordHasher passwordHasher;
 
-    @GetMapping("login/{login}/{password}")
-    public ResponseEntity login(@PathVariable String login, @PathVariable String password) {
-        final Optional<JwtResponse> token = authService.login(login, password);
-
+    @GetMapping("/login")
+    public ResponseEntity login(@RequestBody LoginDto login) {
+        final Optional<JwtResponse> token = authService.login(login.getLogin(), login.getPassword());
         if(token.isEmpty())
         {
             return  ResponseEntity.badRequest().body("Wrong password or login");
         }
-
         return ResponseEntity.ok(token);
     }
 
-    @PostMapping("new-user")
+    @PostMapping("/new-user")
     public ResponseEntity createUser(@RequestBody UserViewModel userVm) {
         User user;
         try {

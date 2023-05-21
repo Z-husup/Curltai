@@ -20,8 +20,10 @@ public class MediaService {
     public MediaDto getMediaDto(Long communityId) {
         Community community = communityRepository.findById(communityId).orElseThrow();
         MediaDto mediaDto = new MediaDto();
+
         mediaDto.setMedia(new ArrayList<>(community.getMedia()));
         mediaDto.setMembership(community.getMembership());
+
         return mediaDto;
     }
 }

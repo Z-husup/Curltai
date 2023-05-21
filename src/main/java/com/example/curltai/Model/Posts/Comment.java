@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "comment")
@@ -23,7 +24,7 @@ public class Comment {
 
     private int likes;
 
-    private Time created_at;
+    private Timestamp created_at;
 
     @ManyToOne
     @JoinColumn(name="id_user")

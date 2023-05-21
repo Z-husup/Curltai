@@ -9,8 +9,13 @@ import java.util.List;
 
 @Data
 public class CommunityFeedDto {
+
     List<Post> posts;
+
     List<Artist> artists;
+
     String image;
+
     Membership membership;
+
 }

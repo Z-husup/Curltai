@@ -25,8 +25,10 @@ public class StoreService {
     public StoreDto getStoreDto(Long communityId) {
         Community community = communityRepository.findById(communityId).orElseThrow();
         StoreDto storeDto = new StoreDto();
+
         storeDto.setProducts(new ArrayList<>(community.getProduct()));
         storeDto.setMembership(community.getMembership());
+
         return storeDto;
     }
 

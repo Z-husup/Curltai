@@ -8,6 +8,8 @@ import lombok.Data;
 import java.util.List;
 @Data
 public class StoreDto {
+
     List<Product> products;
+
     Membership membership;
 }

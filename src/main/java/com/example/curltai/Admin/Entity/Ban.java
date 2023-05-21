@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "ban")
+@Table(name = "ban_list")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
