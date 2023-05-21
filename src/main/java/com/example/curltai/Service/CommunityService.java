@@ -1,13 +1,11 @@
 package com.example.curltai.Service;
 
-import com.example.curltai.Dto.CommunityDto;
 import com.example.curltai.Exception.CommunityNotFoundException;
 import com.example.curltai.Interface.CommunityServiceInterface;
 import com.example.curltai.Model.Community.Community;
 import com.example.curltai.Repository.CommunityRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

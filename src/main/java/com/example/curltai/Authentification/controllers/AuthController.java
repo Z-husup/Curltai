@@ -42,22 +42,18 @@ public class AuthController {
         } catch (IllegalArgumentException exc) {
             return ResponseEntity.badRequest().body("Incorrect role!");
         }
-
         if (user.getLogin() == null) {
             return ResponseEntity.badRequest().body("Require param login, doesn't exist");
         }
-
         if (user.getPassword() == null) {
             return ResponseEntity.badRequest().body("Require param password, doesn't exist");
         }
-
         if (userService.getByLogin(user.getLogin()).isPresent()) {
             return ResponseEntity.badRequest().body("The user with same login already exist!");
         }
         if (userService.getByEmail(user.getEmail()).isPresent()) {
             return ResponseEntity.badRequest().body("The user with same email already exist!");
         }
-
         userService.createUser(user, user.getPassword());
         return ResponseEntity.ok().build();
     }

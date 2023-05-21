@@ -11,7 +11,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -63,4 +65,24 @@ public class Community {
     @JsonIgnore
     @OneToMany(mappedBy = "community")
     private Set<Purchase> purchase = new HashSet<>();
+
+    public List<Post> getArtistPosts() {
+        List<Post> artistPosts = new ArrayList<>();
+        for (Post post : post) {
+            if (post.getArtist() != null) {
+                artistPosts.add(post);
+            }
+        }
+        return artistPosts;
+    }
+
+    public List<Post> getFeedPosts() {
+        List<Post> feedPosts = new ArrayList<>();
+        for (Post post : post) {
+            if (post.getArtist() == null) {
+                feedPosts.add(post);
+            }
+        }
+        return feedPosts;
+    }
 }

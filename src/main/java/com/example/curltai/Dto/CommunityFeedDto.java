@@ -8,7 +8,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class CommunityDto {
+public class CommunityFeedDto {
     List<Post> posts;
     List<Artist> artists;
     String image;

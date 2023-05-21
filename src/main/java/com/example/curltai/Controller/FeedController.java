@@ -1,16 +1,15 @@
 package com.example.curltai.Controller;
 
 
-import com.example.curltai.Dto.CommunityDto;
+import com.example.curltai.Dto.CommunityFeedDto;
 import com.example.curltai.Model.Posts.Post;
 import com.example.curltai.Repository.CommunityRepository;
-import com.example.curltai.Service.CommunityService;
 import com.example.curltai.Service.FeedService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/feed")
+@RequestMapping
 public class FeedController {
 
     private final CommunityRepository communityRepository;
@@ -23,14 +22,13 @@ public class FeedController {
 
     @GetMapping("/{community_id}/feed")
     public ResponseEntity getCommunityDto(@PathVariable Long community_id) {
-        CommunityDto communityDto = feedService.getCommunitFeedyById(community_id);
-        return ResponseEntity.ok(communityDto);
+        CommunityFeedDto communityFeedDto = feedService.getCommunitFeedyById(community_id);
+        return ResponseEntity.ok(communityFeedDto);
     }
 
     @PutMapping("/{community_id}/feed")
-    public ResponseEntity updateUser(@PathVariable Long community_id, @RequestBody Post post) {
-
-
+    public ResponseEntity likePost(@PathVariable Long community_id, @RequestBody Post post) {
+        feedService.addLikeToPost(post.getId_post());
         return ResponseEntity.ok(post);
     }
 }
