@@ -10,9 +10,7 @@ import com.example.curltai.Service.CommunityService;
 import com.example.curltai.Service.MembershipService;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -34,11 +32,9 @@ public class AdminController {
     }
 
     @GetMapping
-    public ModelAndView showAdminPage() {
-        ModelAndView modelAndView = new ModelAndView("admin");
+    public ResponseEntity<List<Community>> showAdminPage() {
         List<Community> communities = communityService.getAllCommunities();
-        modelAndView.addObject("communities", communities);
-        return modelAndView;
+        return ResponseEntity.ok().body(communities);
     }
 
     @GetMapping("/new-community")
@@ -56,19 +52,9 @@ public class AdminController {
     }
 
 
-    @PostMapping(value = "/new-community", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<Community> createNewCommunity(@RequestBody MultiValueMap<String, String> formData) {
-        String communityName = formData.getFirst("name");
-        String communityImage = formData.getFirst("image");
-        String communityDescription = formData.getFirst("description");
-
-        NewCommunityDto newCommunityDto = new NewCommunityDto();
-        newCommunityDto.setName(communityName);
-        newCommunityDto.setImage(communityImage);
-        newCommunityDto.setDescription(communityDescription);
-
+    @PostMapping(value = "/new-community")
+    public ResponseEntity<Community> createNewCommunity(@RequestBody NewCommunityDto newCommunityDto) {
         Community createdCommunity = adminService.createCommunity(newCommunityDto);
-
         return ResponseEntity.ok().body(createdCommunity);
     }
 
