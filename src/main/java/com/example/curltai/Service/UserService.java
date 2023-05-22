@@ -2,7 +2,9 @@ package com.example.curltai.Service;
 
 import com.example.curltai.Authentification.Services.JwtProvider;
 import com.example.curltai.Authentification.Services.PasswordHasher;
+import com.example.curltai.Dto.SubCommunityDto;
 import com.example.curltai.Model.Users.User;
+import com.example.curltai.Repository.CommunityRepository;
 import com.example.curltai.Repository.UserRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordHasher passwordHasher;
     private final JwtProvider jwtProvider;
+    private final CommunityRepository communityRepository;
 
 
     public User getUserById(@NonNull Long id) {
@@ -44,6 +47,12 @@ public class UserService {
 
     public void createUser(User user, String password) {
         user.setPassword(passwordHasher.hash(password));
+        userRepository.save(user);
+    }
+
+    public void setSubCommunity(SubCommunityDto subCommunityDto) {
+        User user = userRepository.findById(subCommunityDto.getUser_id()).orElse(null);
+        user.getCommunity().add(communityRepository.getById(subCommunityDto.getCommunity_id()));
         userRepository.save(user);
     }
 
